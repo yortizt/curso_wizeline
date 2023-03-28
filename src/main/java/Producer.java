@@ -26,15 +26,14 @@ public class Producer {
 
         // create a producer record
         for(int i=0; i<10; i++) {
+            ProducerRecord<String, String> record ;
             if(i%2==0){
-                ProducerRecord<String, String> record = new ProducerRecord<>("topico-prueba","par" ,"hello world! " + i);
-                Thread.sleep(2000);
-                producer.send(record);
+                record = new ProducerRecord<>("topico-prueba","par" ,"hello world! " + i);
             } else {
-                ProducerRecord<String, String> record = new ProducerRecord<>("topico-prueba", "impar", "hello world! " + i);
-                Thread.sleep(2000);
-                producer.send(record);
+               record = new ProducerRecord<>("topico-prueba", "impar", "hello world! " + i);
             }
+            Thread.sleep(2000);
+            producer.send(record);
             
         }
 
